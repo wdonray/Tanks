@@ -1,0 +1,468 @@
+Tanks! 
+ 
+01 - PROJECT & SCENE SETUP 
+02 - TANK CREATION & CONTROLS 
+03 - CAMERA 
+04 - HEALTH
+05 - SHELL'S
+06 - SHOOTING 
+07 - GAME MANAGERS 
+08 - AUDIO
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+PHASE ONE 
+
+1. Install Unity version 5.6 or greater 
+2. Download the project from the asset store, just search for Tanks tutorial 
+3. Import the files from the Asset store package 
+
+1. Make sure you have the correct project open and you are in an empty scene, if not, go to  File > New Scene 
+2. Save the empty scene to the Scenes folder and call it Main
+
+1. Delete the Directional Light from the scene
+2. Drag the Level Art prefab from the Project panel Prefabs folder into the Hierarchy panel, Reset  Position to (0,0,0)
+3. From the Window menu, open the Lighting Panel then click settings
+
+1. At the bottom of the panel uncheck Auto Generate
+2. Moving up, under Mixed Lighting, uncheck Baked Global Illumination 
+3. Under Lightmapping Settings, set Indirect Resolution to 0.5 
+4. Under Environment Lighting, Change Source from Skybox to Color 
+5. Set the Ambient Color to HEX # 483E71﻿ 
+6. Click Generate Lighting
+
+
+1. Return to the Inspector panel 
+2. Change the Position of the Main Camera to ( -43, 42, -25 ) 
+3. Change its Rotation to ( 40, 60, 0 ) 
+4. On the Camera component change the Projection to Orthographic
+
+1. Change Clear Flags from Skybox  to Solid Color 
+2. Change the Background color to whatever you want
+3. Save your scene!
+
+END OF PHASE ONE
+ 
+ 
+ 
+PHASE TWO
+1. In the Models folder of the Project, find the model called Tank and drag it into the Hierarchy panel 
+2. At the top of the Inspector panel, set the Layer of the Tank GameObject to Players 
+3. For the Change Layer dialog that appears, select No, this object only
+
+1. Add a Rigidbody component  
+2. Expand the Constraints area of the Rigidbody 
+3. Under Constraints check Freeze Position for the Y axis 
+4. Check Freeze Rotation for the X and Z axes
+
+1. Add a Box Collider component to the   Tank GameObject 
+2. On the Box Collider component change the Center to ( 0,  0.85,  0 ) 
+3. Also, change the Size to ( 1.5,  1.7,  1.6 )
+
+1. Add an Audio Source component to the Tank GameObject 
+2. On the Audio Source component change the AudioClip to EngineIdle using the circleselect button 
+3. Also check Loop
+
+
+1. Add another Audio Source component  
+2. On the second Audio Source component uncheck Play On Awake 
+3. Select the Prefabs folder in the Project panel 
+4. Click and drag the Tank GameObject from the Hierarchy to the Project panel 
+5. Save the scene! 
+
+1. From the Prefabs folder drag the DustTrail prefab onto the Tank GameObject in the Hierarchy to make it a child GameObject 
+2. Duplicate the DustTrail so that there are two, Ctrl-D on PC 
+
+
+1. Rename one of the child GameObjects from DustTrail to LeftDustTrail 
+2. Set the Position of LeftDustTrail to ( -0.5, 0, -0.75 ) 
+3. Rename the other DustTrail GameObject   to RightDustTrail 
+4. Set the position of RightDustTrail   to ( 0.5, 0, -0.75 ) 
+
+1. In the Scripts/Tank folder, find the TankMovement script 
+2. Drag and drop it onto the Tank GameObject 
+3. Open the TankMovement script using double click on the script in the Project view
+TankMovement Script 
+
+1. For the Movement Audio variable use the first Audio Source component. Drag the name of the component and drop it onto the space next to Movement Audio 
+2. For the Engine Idling variable, click on the circle-select button and choose the EngineIdle audio clip from the list
+
+1. For the Engine Driving variable, click on the circle-select button & choose EngineDriving
+ 2. At the top of the Inspector, apply the changes to your Tank prefab by clicking Apply 
+3. Save your scene using File > Save 
+
+1. Press Play and try driving the tank around! 
+2. Remember to press Play again to stop   playing afterwards 
+3. Save the scene!
+END OF PHASE TWO
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+PHASE THREE
+
+1. Use the Create menu in the Hierarchy to create an Empty GameObject by choosing Create Empty 
+2. Rename the empty GameObject to CameraRig
+
+1. Reset its Position by clicking the Cog icon next to its Transform component and choosing Reset Position
+2. Set the Rotation of the CameraRig   to ( 40,  60,  0 )
+
+
+1. In the Hierarchy drag the Main Camera GameObject onto the CameraRig GameObject to make it a child 
+2. Set the Position of the Main Camera   to ( 0,  0,  -65 ) 
+3. Make sure the Rotation of the Main Camera   is ( 0,  0,  0 )
+ 
+1. Find the Scripts/Camera folder 
+CameraControl Script 
+2. Drag and drop the Camera Control script onto the CameraRig GameObject in the Hierarchy 
+3. Double click on the script name on the Component to open it 
+ 
+1. Select the CameraRig GameObject  
+2. Drag the Tank GameObject onto the name of the public variable Targets on the Camera  Control (script) component
+
+1. Press Play and give your game a test 
+2. Stop Play afterwards! (not pause) 3. Save the scene! 
+
+END OF PHASE THREE
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+PHASE FOUR
+
+
+
+1. Make sure the transform toggle above the Scene View is set to Pivot and not Center 
+2. Create a Slider using GameObject > UI > Slider  from the top menu 
+
+1. Select the EventSystem GameObject
+2. On the Standalone Input Module component change the Horizontal Axis to HorizontalUI
+3. Set the Vertical Axis to VerticalUI 
+4. Select the Canvas GameObject
+5. On the Canvas Scaler component change the Reference Pixels per Unit to 1
+
+1. On the Canvas component of the Canvas GameObject change the Render Mode to World Space
+
+
+1. In the Hierarchy drag Canvas onto the Tank GameObject to make it a child 
+2. Select the Canvas, on the RectTransform component change Position to ( 0, 0.1, 0 ) 
+3. Change the Width and Height to 3.5 
+4. Change the Rotation to ( 90, 0, 0 ) 
+5. Save the scene!
+
+1. Expand the Canvas and all of it’s children by Alt Clicking the arrow to its left 
+2. Select the HandleSlideArea and delete it 
+3. Multi-Select Slider, Background, Fill Area and Fill 
+4. Click on the Anchor Presets drop-down and  Alt-Click on the lower-right preset to stretch the GameObjects over the entire canvas
+
+1. Select the Slider GameObject  
+2. On the Slider component uncheck Intractable 
+3. Change the Transition to None 
+4. Change the Max Value and Value to 100
+
+1. Rename the Slider to HealthSlider 
+2. Select the Background GameObject 
+3. On the Image component use the circleselect to change the Source Image  to HealthWheel 
+4. Click on Color to change the alpha (A) to 80
+
+1. Select the Fill GameObject 
+2. Set the SourceImage on the Image component to HealthWheel 
+3. Change the alpha (A) to 150 
+4. Change the Image Type to Filled 
+5. Change the Fill Origin to Left
+6. Uncheck Clockwise
+
+1. In the Scripts/UI folder, find the UIDirectionControl script  
+TankHealth and UIDirectionControl Scripts
+2. Select the HealthSlider GameObject and add the UIDirectionControl script to it 
+3. Select the Tank GameObject and click Apply at the top of the Inspector to update the prefab
+
+1. Find the TankExplosion prefab in the Prefabs folder. Drag it into the Hierarchy 
+2. Add an AudioSource component to the TankExplosion GameObject 
+3. Assign the TankExplosion Audio Clip to the Audio Source, and uncheck Play On Awake
+
+1. On the TankExplosion GameObject, click Apply to update the prefab 
+2. Delete the TankExplosion prefab from the Hierarchy 
+3. Find the TankHealth script in the Scripts/Tank folder. Drag it onto the Tank GameObject 
+4. Double-click on the TankHealth script to open it for editing
+
+
+1. Select the Tank GameObject  
+2. Drag and drop the HealthSlider GameObject from the Hierarchy onto the HealthSlider public variable of the TankHealth script 
+3. Do the same with the Fill GameObject for the Fill Image public variable 
+4. Drag & Drop the TankExplosion prefab onto the Explosion Prefab public variable
+
+1. At the top of the Inspector, Apply the changes to the Tank prefab.
+2. Save the scene!
+ 
+END OF PHASE FOUR
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+PHASE FIVE
+
+1. Find the model named Shell in the Models folder.  Drag it into the Hierarchy
+2. Add a Capsule Collider component to the Shell GameObject 
+3. Check Is Trigger on the Capsule Collider
+
+1. Set the Direction to Z-Axis 
+2. Change the Center of the Capsule Collider  to ( 0, 0, 0.2 )
+3. Change the Radius of the Capsule Collider  to 0.15 and the Height to 0.55 
+4. Add a Rigidbody component to the Shell GameObject
+
+1. Find the prefab ShellExplosion in the Prefabs folder. Drag it onto the Shell GameObject to make it a child 
+2. Add an AudioSource component to the ShellExplosion GameObject
+
+1. Use the circle-select to set AudioClip of the AudioSource to ShellExplosion 
+2. Uncheck Play On Awake on the AudioSource
+
+1. Reselect the Shell GameObject 
+2. Add a Light Component
+
+1. In the Scripts/Shell folder, find the ShellExplosion script, drag it onto the Shell GameObject in the Hierarchy 
+ShellExplosion Script
+2. Double click on the ShellExplosion script to open it for editing
+
+1. With the Shell GameObject still selected drag the child GameObject called ShellExplosion onto the Explosion Particles and Explosion Audio public variables 
+2. Set the Tank Mask public variable to Players 
+3. Drag the Shell GameObject to the Prefabs folder in the Project panel to save it as a prefab
+
+1. Delete the Shell GameObject from the Hierarchy 
+2. Save the scene!
+END OF PHASE FIVE
+
+
+
+ 
+ PHASE SIX
+1. Select the Tank GameObject in the Hierarchy 
+2. Right-click on the Tank GameObject and choose Create Empty 
+3. Rename the child GameObject to FireTransform 
+4. Set the Position of FireTransform to ( 0, 1.7, 1.35 ) 
+5. Set the Rotation of FireTransform to ( 350, 0, 0 )
+
+1. Right-click on Canvas in the Hierarchy and choose UI > Slider 
+2. Rename the new Slider to AimSlider 
+3. Alt-click the arrow to the left of AimSlider to Expand the GameObject so that its children are visible in the Hierarchy 
+4. Delete the Background and Handle Slide Area GameObjects
+
+1. Reselect the AimSlider GameObject and find the Slider component in the Inspector 
+2. Uncheck Interactable 
+3. Set the Slider component’s Transition to None 
+4. Set Direction to Bottom To Top 
+5. Set the Min Value to 15 
+6. Set the Max Value to 30
+
+1. Multi-Select the AimSlider and Fill Area GameObjects 
+2. In their Rect Transform components click on the Anchor Presets drop down and alt-click the lower-right option to Stretch the GameObjects vertically and horizontally over the canvas
+
+1. Expand Fill Area and select the Fill 
+2. On the Rect Transform, set Height to 0 to remove offsets from the parent Rect 
+3. On the Fill GameObject, for the Image component use the circle-select button to change the Source Image to Aim Arrow
+
+1. Select the AimSlider GameObject 2. Use the Rect Tool (T) to drag the Left / Right bounds of the Rect so that its as narrow as the Tank 
+3. Drag the AimSlider forward & up from the Tank, then drag out the top edge to make a longer slider 
+4. Our values are (1,  -9,  -1,  1,  3)
+
+1. Find the TankShooting script in the Scripts/ Tank folder 
+TankShooting Script
+2. Drag and drop it onto the Tank GameObject in the Hierarchy 
+3. Double-click on the TankShooting script in the Project panel to open it for editing
+
+1. Find the Shell prefab in the Prefabs folder and drag it onto the Shell public variable 
+2. Find the FireTransform child GameObject and drag it onto the FireTransform public variable 
+3. Find the AimSlider GameObject which is a child of the Canvas GameObject.  Drag it onto the AimSlider public variable
+
+1. Find the second Audio Source on the Tank GameObject.  This is the one with no clip assigned as well as Loop and Play On Awake unchecked
+ 2. Drag and drop the name of this Audio Source onto the Shooting Audio public variable of the TankShooting script
+
+1. Use the circle-select button to set the Charging Clip variable to ShotCharging 
+2. Likewise use the circle-select button to set the Fire Clip variable to ShotFiring 
+3. Ensure the Tank GameObject is still selected  and click Apply at the top of the Inspector to update the prefab
+
+1. The Tank is now finished! Give it a test! 
+2. MAKE SURE THAT ALL CHANGES ARE APPLIED  to the Tank prefab by pressing Apply at the top of the Tank GameObject’s Inspector 
+3. Delete the Tank GameObject from the scene 
+4. Save the scene!
+END OF PHASE SIX
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+PHASE SEVEN
+
+1. Create two empty GameObjects by going to the Create menu in the Hierarchy and selecting Create Empty - twice! 
+2. Rename the empty GameObjects to SpawnPoint1 and SpawnPoint2
+
+1. Position SpawnPoint1 at ( -3, 0, 30 ) 
+2. Set the Rotation of SpawnPoint1 to ( 0, 180, 0 ) 
+3. Position SpawnPoint2 at ( 13, 0, -5 ) 
+4. Ensure the Rotation of SpawnPoint2 is ( 0,0,0 )
+
+1. In the Inspector, to the left of the GameObject’s name is an icon for the GameObject’s gizmo. Change the gizmo for SpawnPoint1 to the blue name tag 
+2. Change the gizmo for SpawnPoint2 to the red name tag
+
+1. Go to GameObject > UI > Canvas  to create a new canvas GameObject 
+2. Rename it MessageCanvas 
+3. On the Scene view, click on the 2D button to enable 2D mode 
+4. With the MessageCanvas selected and the mouse cursor over the Scene view press F to frame the selected MessageCanvas
+
+1. Right-click MessageCanvas and choose  UI > Text to create a Text GameObject as a child of the MessageCanvas
+
+1. On the RectTransform component of the Text GameObject set the Anchors for the X and Y axes to have a Min of 0.1 and a Max of 0.9 
+2. Set the Left, Right, Top, Bottom and Pos Z to 0
+
+1. On the Text component set the Text to be “TANKS!” 
+2. Use the circle-select button to change the Font to BowlbyOne-Regular 
+3. Change the Alignment to centre and middle
+
+1. Enable Best Fit 
+2. Set the Max Size to 60 
+3. Set the Color to White ( 255, 255, 255, 255 )
+
+1. Click the Add Component button and type Shadow in the search bar 
+2. Click on the Shadow component in the list to add it to the Text GameObject 
+3. Set Effect Color to Brown ( 114, 71, 40, 128 ) 
+4. Set the Effect Distance to ( -3, -3 ) 5. Disable 2D Mode on the Scene View
+
+1. Select the CameraRig GameObject 
+2. Go to Edit > Frame Selected (Shortcut - F) 
+3. On the CameraControl (script) component, set the Targets array to a size of 0 by typing into the Size property, and pressing Return 
+4. Double click on the CameraControl script to open it for editing
+
+1. Click the Create button on the Hierarchy and choose Create Empty 
+2. Rename it GameManager 
+3. Find the GameManager script in the Scripts/ Managers folder 
+4. Drag it onto the GameManager GameObject to add it as a component
+
+1. Drag the CameraRig GameObject from the Hierarchy onto the Camera Control public variable of the GameManager (script) component 
+2. Expand the MessageCanvas GameObject  
+3. Drag the Text child GameObject onto the  Message Text public variable of the Game Manager 4. Find the Tank prefab in the Prefabs folder and drag it onto the Tank Prefab public variable 
+
+1. Expand the Tanks array on the GameManager script, set the Size to 2 
+2. Expand Element 0, change the Player Color to Blue ( 42, 100, 178 ) 
+3. Drag the SpawnPoint1 GameObject from the Hierarchy onto the Spawn Point variable of Element 0 in the Tanks array 
+
+1. Expand Element 1 and change the Player Color to Red ( 229, 46, 40 ) 
+2. Drag on the SpawnPoint2 GameObject as the Spawn Point of Element 1
+
+1. Double click the GameManager script to open it 
+2. Double click the TankManager script to open it 
+GameManger and TankManager Script
+
+1. Save the scene! 
+2. Grab a neighbour and give it a test!
+END OF PHASE SEVEN
+
+
+ 
+ 
+ 
+PHASE EIGHT
+1. With the GameManager GameObject selected, click the Add Component button and choose Audio > Audio Source. 
+2. Use the circle-select button to set the Audio Clip to BackgroundMusic 
+3. Check Loop
+
+1. Right click on the empty AudioMixers folder and choose Create > Audio Mixer 
+2. Rename it MainMix
+3. Go to Window > Audio Mixer
+
+1. Use the + icon above the Groups hierarchy to add a child of the Master group 
+2. Name the new group Music 
+3. Reselect the Master group and create another group as its child 
+4. Rename this group SFX
+
+1. Reselect the Master group and create a third child group 
+2. Rename the last group Driving 
+3. Make sure they are all children of the Master group
+
+1. Select the Tank prefab in the Prefabs folder 
+2. For the First Audio Source use the circleselect button to set its Output to the Driving group of the MainMix audio mixer 
+3. For the Second Audio Source use the circleselect to set its Output to the SFX group of the MainMix audio mixer
+
+1. Find the Shell prefab in the Prefabs folder. Expand it so that you can see its children. 
+2. Select the ShellExplosion child 
+3. Set the Output for the AudioSource on the ShellExplosion child to the SFX group of the MainMix audio mixer
+
+1. In the Hierarchy select the GameManager GameObject 
+2. Set the Output for the Audio Source to the Music group of the MainMix audio mixer 
+3. Select the TankExplosion prefab in the Project, set its Audio Source output to the SFX group of the MainMix audio mixer
+
+1. Return to the Audio Mixer Window 
+2. Make sure you have MainMix selected 
+3. Select the Music group of MainMix 
+4. Set its Attenuation to -12 using the fader 
+5. Select the Driving group of MainMix 
+6. Change its Attenuation to -25
+
+1. Reselect the Music group 
+2. In the Inspector click the Add Effect button and choose Duck Volume
+
+1. Select the SFX group 
+2. Click the Add Effect button and  choose Send effect 
+3. For the Send effect set Receive  to Music\Duck Volume 
+4. Change the Send Level to 0db (full)
+
+1. Reselect the Music group 
+2. For the Duck Volume effect change the Threshold to -46 
+3. Change the Ratio to 250 
+4. Change the Attack Time to 0
+
+1. Save the scene! 
+2. Your game is complete! It’s Play Time!
+
+END OF PHASE EIGHT
+CONGRATS YOU DID IT!
+ 
